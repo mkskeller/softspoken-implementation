@@ -18,7 +18,7 @@ namespace osuCrypto
 
         std::vector<KyberOTRecver> ot(n);
 
-        static_assert(std::is_pod<KyberOtRecvPKs>::value, "");
+        static_assert(std::is_trivial<KyberOtRecvPKs>::value, "");
         std::vector<KyberOtRecvPKs> pkBuff(n);
 
         auto iter = pkBuff.data();
@@ -34,7 +34,7 @@ namespace osuCrypto
         chl.asyncSend(std::move(pkBuff));
 
 
-        static_assert(std::is_pod<KyberOTCtxt>::value, "");
+        static_assert(std::is_trivial<KyberOTCtxt>::value, "");
         std::vector<KyberOTCtxt> ctxts(n);
 
         chl.recv(ctxts.data(), ctxts.size());

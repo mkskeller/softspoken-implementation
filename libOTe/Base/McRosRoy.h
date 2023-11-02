@@ -68,7 +68,7 @@ namespace osuCrypto
                 PRNG& prng,
                 Channel& chl) override;
 
-            static_assert(std::is_pod<typename PopfFactory::ConstructedPopf::PopfFunc>::value,
+            static_assert(std::is_trivial<typename PopfFactory::ConstructedPopf::PopfFunc>::value,
                 "Popf function must be Plain Old Data");
             static_assert(std::is_same<typename PopfFactory::ConstructedPopf::PopfOut, Point>::value,
                 "Popf must be programmable on elliptic curve points");
