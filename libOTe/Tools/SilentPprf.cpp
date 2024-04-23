@@ -1062,7 +1062,7 @@ namespace osuCrypto
                         for (u64 i = 0; i < 8; ++i)
                         {
                             // the index of the leaf node that is active.
-                            auto leafIdx = points[i + g];
+                            auto leafIdx = points.at(i + g);
 
                             // The index of the active child node.
                             auto activeChildIdx = leafIdx >> (mDepth - 1 - d);
@@ -1081,7 +1081,7 @@ namespace osuCrypto
                             // correct the sum value by XORing off the incorrect
                             auto correctSum =
                                 inactiveChild ^
-                                theirSums[notAi][d][i];
+                                theirSums.at(notAi)[d][i];
 
                             inactiveChild =
                                 correctSum ^
