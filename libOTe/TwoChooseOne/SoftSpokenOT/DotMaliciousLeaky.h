@@ -24,6 +24,8 @@ public:
 
 	AlignedBlockPtr extraW;
 
+	bool malicious;
+
 	struct Hasher :
 		public Chunker<
 			Hasher,
@@ -53,7 +55,8 @@ public:
 
 	DotMaliciousLeakySender(size_t fieldBits, size_t numThreads_ = 1) :
 		Base(fieldBits, numThreads_),
-		ChunkerBase(this)
+		ChunkerBase(this),
+		malicious(true)
 	{}
 
 	DotMaliciousLeakySender splitBase()
@@ -72,7 +75,7 @@ public:
 		PRNG& prng,
 		Channel& chl) override
 	{
-		Base::setBaseOts(baseRecvOts, choices, prng, chl, true);
+		Base::setBaseOts(baseRecvOts, choices, prng, chl, malicious);
 	}
 
 	virtual void initTemporaryStorage() override
@@ -124,6 +127,8 @@ public:
 
 	AlignedBlockPtr extraV;
 
+	bool malicious;
+
 	struct Hasher :
 		public Chunker<
 			Hasher,
@@ -153,7 +158,8 @@ public:
 
 	DotMaliciousLeakyReceiver(size_t fieldBits, size_t numThreads_ = 1) :
 		Base(fieldBits, numThreads_),
-		ChunkerBase(this)
+		ChunkerBase(this),
+		malicious(true)
 	{}
 
 	DotMaliciousLeakyReceiver splitBase()
@@ -168,7 +174,7 @@ public:
 
 	void setBaseOts(span<std::array<block, 2>> baseSendOts, PRNG& prng, Channel& chl) override
 	{
-		Base::setBaseOts(baseSendOts, prng, chl, true);
+		Base::setBaseOts(baseSendOts, prng, chl, malicious);
 	}
 
 	virtual void initTemporaryStorage() override
