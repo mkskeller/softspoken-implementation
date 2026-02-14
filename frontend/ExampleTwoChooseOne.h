@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include "libOTe/Base/BaseOT.h"
 #include "libOTe/TwoChooseOne/KosOtExtReceiver.h"
 #include "libOTe/TwoChooseOne/KosOtExtSender.h"
