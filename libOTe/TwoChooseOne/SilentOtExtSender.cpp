@@ -1,5 +1,6 @@
 #include "libOTe/TwoChooseOne/SilentOtExtSender.h"
 #include "libOTe/Tools/LDPC/LdpcEncoder.h"
+#include <cmath>
 
 #if defined(ENABLE_SILENTOT) || defined(ENABLE_SILENT_VOLE) 
 
